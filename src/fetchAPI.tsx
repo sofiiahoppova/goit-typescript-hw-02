@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetchPhotos = async (userRequest, pageNumber = 1) => {
+const fetchPhotos = async (userRequest: string, pageNumber = 1) => {
   const params = {
     query: userRequest,
     page: pageNumber,
@@ -16,6 +16,9 @@ const fetchPhotos = async (userRequest, pageNumber = 1) => {
       },
     }
   );
+
+  console.log(data);
+
   return data;
 };
 

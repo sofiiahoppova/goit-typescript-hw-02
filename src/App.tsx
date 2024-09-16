@@ -8,6 +8,8 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import fetchPhotos from "./fetchAPI";
 import toast, { Toaster } from "react-hot-toast";
 
+type Image = {};
+
 const App = () => {
   const [images, setImages] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,17 +23,17 @@ const App = () => {
     alt: "",
   });
 
-  function openModal() {
+  const openModal = (): void => {
     setIsOpen(true);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = (): void => {
     setIsOpen(false);
-  }
+  };
 
   useEffect(() => {
     if (searchingValue.trim() === "") return;
-    const getPhotos = async (value) => {
+    const getPhotos = async (value: string) => {
       setError(false);
       setIsLoading(true);
       try {
@@ -60,7 +62,7 @@ const App = () => {
     getPhotos(searchingValue);
   }, [searchingValue, pageNumber]);
 
-  const handleSubmit = (userValue) => {
+  const handleSubmit = (userValue: string) => {
     setImages(null);
     setPageNumber(1);
     setSearchingValue(userValue);
