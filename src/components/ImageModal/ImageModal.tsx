@@ -1,6 +1,16 @@
+import { ImageInterface } from "../../types";
 import css from "./ImageModal.module.css";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
+
+type ImageModalProps = {
+  modalIsOpen: boolean;
+  currentImage: {
+    url: string;
+    alt: string;
+  };
+  closeModal: () => void;
+};
 
 const customStyles = {
   content: {
@@ -13,7 +23,11 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ modalIsOpen, closeModal, currentImage }) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  modalIsOpen,
+  currentImage,
+  closeModal,
+}) => {
   return (
     <Modal
       isOpen={modalIsOpen}
