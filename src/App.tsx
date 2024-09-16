@@ -6,12 +6,11 @@ import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import fetchPhotos from "./fetchAPI";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { ImageInterface } from "./types";
 
-type Image = {};
-
-const App = () => {
-  const [images, setImages] = useState(null);
+const App: React.FC = () => {
+  const [images, setImages] = useState<null | ImageInterface[]>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchingValue, setSearchingValue] = useState("");
@@ -62,7 +61,7 @@ const App = () => {
     getPhotos(searchingValue);
   }, [searchingValue, pageNumber]);
 
-  const handleSubmit = (userValue: string) => {
+  const handleSubmit = (userValue: string): void => {
     setImages(null);
     setPageNumber(1);
     setSearchingValue(userValue);
